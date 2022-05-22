@@ -2,7 +2,7 @@
 const AdminModel = require('../model/admin.model');
 exports.signup=(request,response)=>{
     const {name ,email,password } = request.body;
-    const adminimage = request.file.filename;
+    const adminimage = "http://localhost:3000/images/"+request.file.filename;
     AdminModel.create({name:name,email:email,adminimage:adminimage,password:password}).then(result=>{
         return response.status(201).json(result)
     }).catch(err=>{
@@ -27,7 +27,7 @@ exports.updateAccount =(request,response)=>{
             name:request.body.name,
             email:request.body.email,
             password:request.body.password,
-            image:request.file.filename
+            image:"http://localhost:3000/images/"+request.file.filename
         }
     }).then(result=>{
         return response.status(201).json(result)

@@ -9,8 +9,9 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({ storage: storage });
+
 router.post('/signup',upload.single('image'),UserController.Signup);
-router.post('/signin',UserController.Signin);
+router.post('/signin',UserController.SignIn);
 router.post('/updateaccount',upload.single('image'),UserController.UpdateACC);
 router.post('/deleteaccount',UserController.DeleteAccount);
 module.exports = router;
